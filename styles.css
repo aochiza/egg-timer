@@ -3,6 +3,7 @@ body {
     background-image: url('./res/background1.png');
     margin: 0;
     padding: 0;
+    border-radius: 5px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,9 +30,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-button{
 
-}
 button {
     background-color: #FFD3B5;
     border: 4px solid #FFAAA6; /* Добавляем обводку */
@@ -39,7 +38,7 @@ button {
     /* color: white; */
     padding: 10px 15px;
     margin: 5px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
@@ -51,11 +50,11 @@ button:hover {
 }
 
 #stop, #reset {
-    background-color: #f44336;
+    background-color: #FFD3B5;
 }
 
 #stop:hover, #reset:hover {
-    background-color: #d32f2f;
+    background-color: #FFD3B5;
 }
 
 .custom-time {
