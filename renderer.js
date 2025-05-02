@@ -1,82 +1,103 @@
+// Навигация между страницами
 document.addEventListener('DOMContentLoaded', () => {
-    const timeDisplay = document.getElementById('time');
-    const notification = document.getElementById('notification');
-    let timer;
-    let totalSeconds = 300; // 5 минут по умолчанию
-    
-    // Обновление отображения времени
-    function updateTimeDisplay() {
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    // Стартовая страница
+    if (document.getElementById('start-btn')) {
+        document.getElementById('start-btn').addEventListener('click', () => {
+            window.location.href = 'select.html';
+        });
     }
-    
-    // Запуск таймера
-    function startTimer() {
-        clearInterval(timer);
-        timer = setInterval(() => {
-            if (totalSeconds > 0) {
-                totalSeconds--;
-                updateTimeDisplay();
-            } else {
-                clearInterval(timer);
-                showNotification('Яйца готовы!');
-                playSound();
-            }
-        }, 1000);
+
+    // Страница выбора
+    if (document.querySelector('.food-options')) {
+        const foodButtons = document.querySelectorAll('.food-options button');
+        foodButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const foodName = button.textContent;
+                const cookingTime = button.dataset.time;
+                localStorage.setItem('selectedFood', foodName);
+                localStorage.setItem('cookingTime', cookingTime);
+                window.location.href = 'timer.html';
+            });
+        });
+
+        if (document.getElementById('back-btn')) {
+            document.getElementById('back-btn').addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        }
     }
-    
-    // Показать уведомление
-    function showNotification(message) {
-        notification.textContent = message;
-        notification.style.display = 'block';
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 5000);
+
+    // Страница таймера
+    if (document.getElementById('time')) {
+        const timeDisplay = document.getElementById('time');
+        const notification = document.getElementById('notification');
+        const foodNameElement = document.getElementById('food-name');
+        let timer;
+        
+        // Получаем выбранный продукт и время
+        const selectedFood = localStorage.getItem('selectedFood') || 'Яйцо';
+        const cookingTime = parseInt(localStorage.getItem('cookingTime')) || 300;
+        
+        let totalSeconds = cookingTime;
+        foodNameElement.textContent = selectedFood;
+
+        // Обновление отображения времени
+        function updateTimeDisplay() {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Запуск таймера
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                    updateTimeDisplay();
+                } else {
+                    clearInterval(timer);
+                    showNotification(`${selectedFood} готовы!`);
+                    playSound();
+                }
+            }, 1000);
+        }
+
+        // Показать уведомление
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        // Воспроизвести звук
+        function playSound() {
+            const audio = new Audio(); // Добавьте путь к звуковому файлу
+            audio.play().catch(e => console.log('Не удалось воспроизвести звук:', e));
+        }
+
+        // Автозапуск таймера при загрузке страницы
+        startTimer();
+
+        // Обработчики кнопок
+        document.getElementById('stop').addEventListener('click', () => {
+            clearInterval(timer);
+        });
+
+        document.getElementById('reset').addEventListener('click', () => {
+            clearInterval(timer);
+            totalSeconds = cookingTime;
+            updateTimeDisplay();
+            startTimer();
+        });
+
+        document.getElementById('back-to-select').addEventListener('click', () => {
+            window.location.href = 'select.html';
+        });
+
+        // Инициализация
+        updateTimeDisplay();
     }
-    
-    // Воспроизвести звук (можно добавить позже)
-    function playSound() {
-        // Здесь можно добавить воспроизведение звука
-        console.log('Звук!');
-    }
-    
-    // Обработчики кнопок
-    document.getElementById('soft').addEventListener('click', () => {
-        totalSeconds = 3 * 60;
-        updateTimeDisplay();
-        startTimer();
-    });
-    
-    document.getElementById('medium').addEventListener('click', () => {
-        totalSeconds = 5 * 60;
-        updateTimeDisplay();
-        startTimer();
-    });
-    
-    document.getElementById('hard').addEventListener('click', () => {
-        totalSeconds = 7 * 60;
-        updateTimeDisplay();
-        startTimer();
-    });
-    
-    document.getElementById('start-custom').addEventListener('click', () => {
-        const minutes = parseInt(document.getElementById('minutes').value);
-        totalSeconds = minutes * 60;
-        updateTimeDisplay();
-        startTimer();
-    });
-    
-    document.getElementById('stop').addEventListener('click', () => {
-        clearInterval(timer);
-    });
-    
-    document.getElementById('reset').addEventListener('click', () => {
-        clearInterval(timer);
-        totalSeconds = 5 * 60;
-        updateTimeDisplay();
-    });
-    
-    // Инициализация
-    updateTimeDisplay();
 });

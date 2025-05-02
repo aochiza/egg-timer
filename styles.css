@@ -1,85 +1,57 @@
 body {
-    font-family: Arial, sans-serif;
-    background-image: url('./res/background1.png');
-    margin: 0;
-    padding: 0;
-    border-radius: 5px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif; /* Шрифт Arial */
+    background-image: url('./res/background1.png'); /* Светло-серый фон */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем внутренние отступы */
+    border-radius: 5px;
+    display: flex; /* Включаем flex-разметку */
+    justify-content: center; /* Выравниваем по центру горизонтально */
+    align-items: center; /* Выравниваем по центру вертикально */
+    height: 100vh; /* Занимаем всю высоту экрана */
 }
 
 .container {
     background-color: #DCEDC2;
-    /* border-radius: 10px; */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    border: 4px solid #FFAAA6; /* Добавляем обводку */
+    border: 4px solid #FFAAA6;
     padding: 30px 10px 10px 10px;
     height: 400px;
     width: 340px;
     text-align: center;
 }
 
+
+/* Стили для заголовка h1*/
 h1 {
-    color: #333;
-    margin-bottom: 30px;
+    color: #D05760;/* Темно-розовый цвет */
+    margin-bottom: 30px;/* Отступ снизу */
 }
-
-.controls {
-    margin-bottom: 20px;
-}
-
 
 button {
-    background-color: #FFD3B5;
-    border: 4px solid #FFAAA6; /* Добавляем обводку */
-    color: #D05760;
-    /* color: white; */
-    padding: 10px 15px;
-    margin: 5px;
-    /* border-radius: 5px; */
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    background-color: #FFD3B5; /* Светло-оранжевый фон */
+    border: 4px solid #FFAAA6; /* Розовая рамка */
+    color: #D05760; /* Темно-розовый текст */
+    padding: 10px 15px; /* Внутренние отступы */
+    margin: 10px; /* Внешние отступы */
+    cursor: pointer; /* Курсор-указатель */
+    font-size: 16px; /* Размер текста */
+    transition: all 0.3s; /* Плавные анимации */
 }
 
 button:hover {
-    background-color: #FFD3B5;
-    border: 4px solid #FFAAA6; /* Добавляем обводку */
+    background-color: #FFAAA6; /* Розовый фон при наведении */
+    color: white; /* Белый текст */
 }
 
-#stop, #reset {
-    background-color: #FFD3B5;
+.start-page #start-btn {
+    font-size: 24px;
+    padding: 15px 30px;
 }
 
-#stop:hover, #reset:hover {
-    background-color: #FFD3B5;
+.food-options {
+    display: flex;
+    flex-direction: column;
 }
 
-.custom-time {
-    margin-top: 15px;
-}
-
-.custom-time input {
-    width: 50px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.timer-display {
-    font-size: 48px;
-    margin: 20px 0;
-    /* color: #333; */
-    color: #D05760;
-}
-
-.notification {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #ffeb3b;
-    border-radius: 5px;
-    display: none;
+.food-options button {
+    margin: 5px 0;
 }

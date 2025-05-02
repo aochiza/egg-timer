@@ -2,34 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Boil Timer</title>
+    <title>Boil Timer - Start</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- <h1>Таймер для варки яиц</h1> -->
-        
-        <div class="controls">
-            <button id="soft">Всмятку (3 мин)</button>
-            <button id="medium">В мешочек (5 мин)</button>
-            <button id="hard">Вкрутую (7 мин)</button>
-            
-            <div class="custom-time">
-                <input type="number" id="minutes" min="1" max="10" value="5">
-                <span>минут</span>
-                <button id="start-custom">Старт</button>
-            </div>
-        </div>
-        
-        <div class="timer-display">
-            <div id="time">05:00</div>
-            <button id="stop">Стоп</button>
-            <button id="reset">Сброс</button>
-        </div>
-        
-        <div class="notification" id="notification"></div>
+    <div class="container start-page">
+        <h1>Кухонный таймер</h1>
+        <button id="start-btn">START</button>
     </div>
-    
     <script src="renderer.js"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+.timer-display {
+    font-size: 48px;
+    margin: 20px 0;
+    color: #D05760;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+}
+
+.notification {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffeb3b;
+    border-radius: 5px;
+    display: none;
+}
