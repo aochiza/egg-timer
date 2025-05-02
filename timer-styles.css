@@ -1,16 +1,19 @@
 .timer-display {
-    font-size: 48px;
+    font-size: 60px;
     margin: 20px 0;
     color: #D05760;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 .timer-controls {
     display: flex;
+    font-family: 'Pixelify Sans', sans-serif;
     justify-content: center;
 }
 
 .notification {
     margin-top: 20px;
+    font-family: 'Pixelify Sans', sans-serif;
     padding: 10px;
     background-color: #ffeb3b;
     border-radius: 5px;

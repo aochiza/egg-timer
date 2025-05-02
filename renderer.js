@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => {
                 const time = button.dataset.time;
                 localStorage.setItem('cookingTime', time);
-                localStorage.setItem('selectedFood', 'Яйцо ' + button.textContent.trim());
+                localStorage.setItem('selectedFood', button.textContent.trim());
                 window.location.href = 'timer.html';
             });
         });
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let timer;
         
         // Получаем выбранный продукт и время
-        const selectedFood = localStorage.getItem('selectedFood') || 'Яйцо';
+        const selectedFood = localStorage.getItem('selectedFood');
         const cookingTime = parseInt(localStorage.getItem('cookingTime')) || 300;
         
         let totalSeconds = cookingTime;

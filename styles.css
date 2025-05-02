@@ -37,27 +37,32 @@ h1 {
 }
 
 button {
+    font-family: 'Pixelify Sans', sans-serif;
     background-color: #FFD3B5; /* Светло-оранжевый фон */
     border: 4px solid #FFAAA6; /* Розовая рамка */
     color: #D05760; /* Темно-розовый текст */
-    padding: 10px 15px; /* Внутренние отступы */
+    top: 15px;
+    padding: 4px 10px;
     margin: 10px; /* Внешние отступы */
     cursor: pointer; /* Курсор-указатель */
-    font-size: 16px; /* Размер текста */
+    font-size: 25px; /* Размер текста */
     transition: all 0.3s; /* Плавные анимации */
 }
 
 button:hover {
+    font-family: 'Pixelify Sans', sans-serif;
     background-color: #FFAAA6; /* Розовый фон при наведении */
     color: white; /* Белый текст */
 }
 
 .start-page #start-btn {
+    font-family: 'Pixelify Sans', sans-serif;
     font-size: 30px;
     padding: 5px 70px; /*ширина и длина*/
 }
 
 .food-options {
+    font-family: 'Pixelify Sans', sans-serif;
     display: flex;
     flex-direction: column;
 }
