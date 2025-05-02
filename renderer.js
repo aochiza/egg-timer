@@ -1,22 +1,30 @@
 // Навигация между страницами
 document.addEventListener('DOMContentLoaded', () => {
-    // Стартовая страница
+    // ==================== Стартовая страница (index.html) ====================
     if (document.getElementById('start-btn')) {
         document.getElementById('start-btn').addEventListener('click', () => {
             window.location.href = 'select.html';
         });
     }
-
-    // Страница выбора
+        
+    // ==================== Страница выбора продукта (select.html) ====================
     if (document.querySelector('.food-options')) {
         const foodButtons = document.querySelectorAll('.food-options button');
         foodButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const foodName = button.textContent;
-                const cookingTime = button.dataset.time;
-                localStorage.setItem('selectedFood', foodName);
-                localStorage.setItem('cookingTime', cookingTime);
-                window.location.href = 'timer.html';
+                
+                // Для яйца - переход на страницу выбора типа
+                if (button.dataset.food === 'egg') {
+                    window.location.href = 'egg-type.html';
+                } 
+                // Для других продуктов - сразу на таймер
+                else {
+                    const cookingTime = button.dataset.time;
+                    localStorage.setItem('selectedFood', foodName);
+                    localStorage.setItem('cookingTime', cookingTime);
+                    window.location.href = 'timer.html';
+                }
             });
         });
 
@@ -27,7 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Страница таймера
+    // ==================== Страница выбора типа яйца (egg-type.html) ====================
+    if (document.querySelector('.egg-options')) {
+        const eggButtons = document.querySelectorAll('.egg-options button[data-time]');
+        
+        eggButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const time = button.dataset.time;
+                localStorage.setItem('cookingTime', time);
+                localStorage.setItem('selectedFood', 'Яйцо ' + button.textContent.trim());
+                window.location.href = 'timer.html';
+            });
+        });
+
+        // Назад к выбору продукта
+        document.getElementById('back-to-select').addEventListener('click', () => {
+            window.location.href = 'select.html';
+        });
+    }
+
+    // ==================== Страница таймера (timer.html) ====================
     if (document.getElementById('time')) {
         const timeDisplay = document.getElementById('time');
         const notification = document.getElementById('notification');
@@ -57,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateTimeDisplay();
                 } else {
                     clearInterval(timer);
-                    showNotification(`${selectedFood} готовы!`);
+                    showNotification(`${selectedFood} ready!`);
                     playSound();
                 }
             }, 1000);

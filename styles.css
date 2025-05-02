@@ -6,8 +6,8 @@ body {
     border-radius: 5px;
     display: flex; /* Включаем flex-разметку */
     justify-content: center; /* Выравниваем по центру горизонтально */
-    align-items: center; /* Выравниваем по центру вертикально */
-    height: 100vh; /* Занимаем всю высоту экрана */
+    align-items: center; 
+    height: 100vh; 
 }
 
 .container {
@@ -22,8 +22,9 @@ body {
 
 /* Стили для заголовка h1*/
 h1 {
+    font-family: 'Pixelify Sans', sans-serif;
     color: #D05760;/* Темно-розовый цвет */
-    margin-bottom: 30px;/* Отступ снизу */
+    padding: 40px 30px;
 }
 
 button {
@@ -43,8 +44,8 @@ button:hover {
 }
 
 .start-page #start-btn {
-    font-size: 24px;
-    padding: 15px 30px;
+    font-size: 30px;
+    padding: 5px 70px; /*ширина и длина*/
 }
 
 .food-options {
