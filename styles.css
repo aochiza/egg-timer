@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif; /* Шрифт Arial */
+    font-family: 'Pixelify Sans', sans-serif;
     background-image: url('./res/background1.png');
     margin: 0; /* Убираем отступы по умолчанию */
     padding: 0; /* Убираем внутренние отступы */
