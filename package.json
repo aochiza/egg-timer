@@ -6,7 +6,8 @@
     "start": "electron .",
     "dev": "parcel index.html --open",
     "build": "parcel build index.html select.html timer.html egg-type.html --public-url ./ --no-cache",
-    "clean": "rd /s /q dist .parcel-cache"
+    "clean": "rd /s /q dist .parcel-cache",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "Ksenia and Taisia",
