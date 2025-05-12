@@ -22,11 +22,12 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
+      nodeIntegration: true,
       enableRemoteModule: false
     }
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
   mainWindow.setMenu(null);
 }
 
