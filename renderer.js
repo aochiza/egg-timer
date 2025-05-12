@@ -140,8 +140,28 @@ document.addEventListener('DOMContentLoaded', () => {
          * @inner
          */
         function playSound() {
-            const audio = new Audio();
-            audio.play().catch(e => console.log('Не удалось воспроизвести звук:', e));
+            // Пробуем использовать HTMLAudioElement
+            const audioElement = document.getElementById('timer-sound');
+            
+            if (audioElement) {
+                audioElement.currentTime = 0; // Перематываем на начало
+                audioElement.play().catch(e => {
+                    console.error('Ошибка воспроизведения через audio element:', e);
+                    fallbackSound();
+                });
+            } else {
+                fallbackSound();
+            }
+            
+            // Fallback для случаев, когда audio элемент не доступен
+            function fallbackSound() {
+                try {
+                    const audio = new Audio('./sounds/timer.mp3');
+                    audio.play().catch(e => console.error('Fallback sound error:', e));
+                } catch (e) {
+                    console.error('Оба метода воспроизведения не сработали:', e);
+                }
+            }
         }
 
         startTimer();
