@@ -1,16 +1,26 @@
 {
   "name": "egg_timer",
   "version": "1.0.0",
-  "main": "main.js",
+  "description": "A timer app for cooking product",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "parcel index.html --open",
+    "build": "parcel build index.html select.html timer.html egg-type.html --public-url ./ --no-cache",
+    "clean": "rd /s /q dist .parcel-cache"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ksenia and Taisia",
+  "license": "MIT",
+  "targets": {
+    "default": {
+      "context": "browser",
+      "publicUrl": "./"
+    }
+  },
   "devDependencies": {
-    "electron": "^35.1.5",
-    "electron-builder": "^26.0.12"
+    "electron": "^36.2.0",
+    "electron-builder": "^26.0.12",
+    "parcel": "^2.14.4"
   },
   "dependencies": {
     "7zip-bin": "^5.2.0",
@@ -266,6 +276,5 @@
     "yargs-parser": "^21.1.1",
     "yauzl": "^2.10.0",
     "yocto-queue": "^0.1.0"
-  },
-  "description": ""
+  }
 }
