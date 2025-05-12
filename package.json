@@ -20,6 +20,7 @@
   "devDependencies": {
     "electron": "^36.2.0",
     "electron-builder": "^26.0.12",
+    "jsdoc": "^4.0.4",
     "parcel": "^2.14.4"
   },
   "dependencies": {
