@@ -15,7 +15,12 @@
   "targets": {
     "default": {
       "context": "browser",
-      "publicUrl": "./"
+      "publicUrl": "./",
+      "includeNodeModules": true,
+      "outputFormat": "global",
+      "isLibrary": false,
+      "distDir": "./dist"
+
     }
   },
   "devDependencies": {
