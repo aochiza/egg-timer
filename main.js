@@ -1,8 +1,19 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+/**
+ * @module MainProcess
+ * @description Управление основным процессом Electron и созданием окон.
+ */
 
-let mainWindow
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
+/** @type {BrowserWindow} */
+let mainWindow;
+
+/**
+ * Создает главное окно приложения
+ * @function createWindow
+ * @inner
+ */
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 400,
@@ -13,30 +24,39 @@ function createWindow() {
       contextIsolation: true,
       enableRemoteModule: false
     }
-  })
+  });
 
-  mainWindow.loadFile('index.html')
-  mainWindow.setMenu(null)
-  
-  // Опционально: открываем DevTools для отладки
-  // mainWindow.webContents.openDevTools()
+  mainWindow.loadFile('index.html');
+  mainWindow.setMenu(null);
 }
 
-// Это основная точка входа - создаем окно только когда приложение готово
+/**
+ * Обработчик события готовности приложения
+ * @event whenReady
+ * @listens app
+ */
 app.whenReady().then(() => {
-  createWindow()
+  createWindow();
   
-  // Для macOS: создаем новое окно, если все закрыты и пользователь кликнул на иконку в доке
+  /**
+   * Обработчик активации приложения (для macOS)
+   * @event activate
+   * @listens app
+   */
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      createWindow();
     }
-  })
-})
+  });
+});
 
-// Закрываем приложение когда все окна закрыты (кроме macOS)
+/**
+ * Обработчик закрытия всех окон
+ * @event window-all-closed
+ * @listens app
+ */
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
