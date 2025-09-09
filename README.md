@@ -23,7 +23,10 @@ Egg Timer - это веб-приложение для точного отсче�
 git clone https://github.com/aochiza/egg-timer.git
 cd egg-timer
 ```
-2. **Установите Node js с официального сайта**:
+2. **Установите Node js с официального сайта**
+```
+https://www.nodejs.tech/ru/download
+```
 3. **Установите электрон и зависимости**:
 ```bash
 npm install -g electron
